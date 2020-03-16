@@ -17,14 +17,13 @@
                     </div>
                 </div>
                 <div class="add-user padding-vertical">
-                    <button [routerLink]="['/app-add-user/0']" class="btn bg-warning">
+                    <button (click)="addUser()" class="btn bg-warning">
                         <img src /> Add User
                     </button>
-                    
                 </div>
             </div>
         </div>
-    
+
         <div>
             <table class="table table-responsive-sm table-hover mb-0">
                 <thead>
@@ -56,30 +55,29 @@
                     <tr *ngFor="let list of lists;">
                         <td>
                             <div class="status-wrapper">
-    
+
                                 {{list.name}}
                             </div>
                         </td>
                         <td>
                             <div class="status-wrapper">
-    
+
                                 {{list.email}}
                             </div>
                         </td>
                         <td>
                             <div class="status-wrapper">
-    
+
                                 {{list.roleType}}
                             </div>
                         </td>
                         <td>
                             <div class="status-wrapper">
-    
+
                                 {{list.status}}
                             </div>
                         </td>
-                    
-                        <td [routerLink]="['/app-add-user',list._id]" class="edit-action" >
+                        <td (click)="editUser(list._id)" class="edit-action">
                             <img src />
                         </td>
                         <td>
@@ -87,7 +85,6 @@
                         </td>
                     </tr>
                 </tbody>
-    
             </table>
         </div>
     </div>

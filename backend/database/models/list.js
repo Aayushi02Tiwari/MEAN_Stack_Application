@@ -15,7 +15,7 @@ const ListSchema = new mongoose.Schema({
     },
     mobile: {
         type: Number,
-        required:true
+        required: true
     },
     status: {
         type: String,

@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import List from '../models/list';
 import { WebService } from '../web.service';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { BsModalRef } from 'ngx-bootstrap';
 
 @Component({
   selector: 'app-add-user',
@@ -9,7 +10,6 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
-
 
   newUser: any = {
     "name": "",
@@ -19,7 +19,7 @@ export class AddUserComponent implements OnInit {
     "status": ""
   };
   lists: List[] = [];
-  path: any;
+  title: string;
   isPathChanged: boolean = true;
   id: any;
   updateList: any = [{
@@ -31,42 +31,39 @@ export class AddUserComponent implements OnInit {
   }];
 
   constructor(private webService: WebService,
-    private route: ActivatedRoute,
-    private router: Router) { }
+    public bsModalRef: BsModalRef) { }
 
   ngOnInit() {
 
-    this.path = this.router.url;
-    this.id = this.router.url;
-    this.id = this.id.substring(14)
-    console.log(this.id);
-    if (this.path == "/app-add-user/0") {
-      this.path = "Add User";
-    }
-    else {
+    if (this.title == "Add User") {
 
-      this.path = "Update User";
+    } else {
       this.isPathChanged = false;
-
       this.webService.get('lists/' + this.id)
         .subscribe(((lists: List[]) => {
           this.updateList = lists;
-          // console.log(this.newUser);
         }));
     }
   }
-
+// Function to save the new data
   save() {
     console.log(this.newUser);
     this.webService.post('lists', this.newUser)
       .subscribe(((lists: List[]) => this.newUser = lists));
+    this.bsModalRef.hide();
+    window.location.reload();
   }
-
-  update() {
-    console.log(this.id)
-    this.webService.patch(this.id, this.newUser)
-      .subscribe(((lists: List[]) => this.newUser = lists));
+// Function to update the data
+  update(user: any) {
+    console.log(user._id)
+    this.webService.patch(user._id, user)
+      .subscribe(((lists: List[]) => {
+        this.newUser = lists;
+        this.bsModalRef.hide();
+      }));
   }
-
+  dismiss() {
+    this.bsModalRef.hide();
+  }
 }
 

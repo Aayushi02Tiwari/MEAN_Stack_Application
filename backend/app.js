@@ -12,9 +12,8 @@ app.use((req, res, next) => {
     next();
 })
 
-
 app.get('/lists', (req, res) => {
-    List.find({}) 
+    List.find({})
         .then(lists => res.send(lists))
         .catch((error) => console.log(error));
 });
@@ -30,7 +29,7 @@ app.get('/lists/:listId', (req, res) => {
     List.find({ _id: req.params.listId })
         .then(list => res.send(list))
         .catch((error) => console.log(error));
-}); /**http://localhost:3000/lists/5e68a8d8cd071d08f0c90495 */
+});
 
 app.patch('/lists/:listId', (req, res) => {
     List.findOneAndUpdate({ '_id': req.params.listId }, { $set: req.body })
@@ -39,11 +38,9 @@ app.patch('/lists/:listId', (req, res) => {
 });
 
 app.delete('/lists/:listId', (req, res) => {
-
     List.findByIdAndDelete(req.params.listId)
         .then(list => res.send(list))
         .catch((error) => console.log(error));
 });
-
 
 app.listen(3000, () => console.log("Server connected on port 3000"));
