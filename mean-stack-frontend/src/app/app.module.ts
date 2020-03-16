@@ -18,6 +18,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { MatSortModule } from '@angular/material/sort';
     AppComponent,
     UserComponent,
     AddUserComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,

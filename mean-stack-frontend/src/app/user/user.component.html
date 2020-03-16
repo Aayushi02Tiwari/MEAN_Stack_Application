@@ -1,89 +1,94 @@
-<div class="card">
-    <div class="header">
-        <div class="user padding-vertical">
-            <img src class="user-icon" /> Users
-        </div>
-        <div class="filter-wrapper">
-            <div class="search-box padding-vertical">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search" />
-                    <div class="input-group-addon">
-                        <img src class="search-icon">
+<div class="navbar-wrapper">
+    <app-nav-bar></app-nav-bar>
+</div>
+<div class="card-wrapper">
+    <div class="card">
+        <div class="header">
+            <div class="user padding-vertical">
+                <img src class="user-icon" /> Users
+            </div>
+            <div class="filter-wrapper">
+                <div class="search-box padding-vertical">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search" />
+                        <div class="input-group-addon">
+                            <img src class="search-icon">
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="add-user padding-vertical">
-                <button [routerLink]="['/app-add-user/0']" class="btn bg-warning">
-                    <img src /> Add User
-                </button>
-                
+                <div class="add-user padding-vertical">
+                    <button [routerLink]="['/app-add-user/0']" class="btn bg-warning">
+                        <img src /> Add User
+                    </button>
+                    
+                </div>
             </div>
         </div>
-    </div>
-
-    <div>
-        <table class="table table-responsive-sm table-hover mb-0">
-            <thead>
-                <tr>
-                    <th>
-                        <span class="name-wrapper">
-                            Name <img src class="sorting-icon" (click)="searchItem()">
-                        </span>
-                    </th>
-                    <th>
-                        <span class="name-wrapper">
-                            Email
-                        </span>
-                    </th>
-                    <th>
-                        <span class="name-wrapper">
-                            Role Type
-                        </span>
-                    </th>
-                    <th>
-                        <span class="name-wrapper">
-                            Status
-                        </span>
-                    </th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let list of lists;">
-                    <td>
-                        <div class="status-wrapper">
-
-                            {{list.name}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="status-wrapper">
-
-                            {{list.email}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="status-wrapper">
-
-                            {{list.roleType}}
-                        </div>
-                    </td>
-                    <td>
-                        <div class="status-wrapper">
-
-                            {{list.status}}
-                        </div>
-                    </td>
-                
-                    <td [routerLink]="['/app-add-user',list._id]" class="edit-action" >
-                        <img src />
-                    </td>
-                    <td>
-                        <a (click)="deleteTask(list._id)">X</a>
-                    </td>
-                </tr>
-            </tbody>
-
-        </table>
+    
+        <div>
+            <table class="table table-responsive-sm table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="name-wrapper">
+                                Name <img src class="sorting-icon" (click)="searchItem()">
+                            </span>
+                        </th>
+                        <th>
+                            <span class="name-wrapper">
+                                Email
+                            </span>
+                        </th>
+                        <th>
+                            <span class="name-wrapper">
+                                Role Type
+                            </span>
+                        </th>
+                        <th>
+                            <span class="name-wrapper">
+                                Status
+                            </span>
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let list of lists;">
+                        <td>
+                            <div class="status-wrapper">
+    
+                                {{list.name}}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="status-wrapper">
+    
+                                {{list.email}}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="status-wrapper">
+    
+                                {{list.roleType}}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="status-wrapper">
+    
+                                {{list.status}}
+                            </div>
+                        </td>
+                    
+                        <td [routerLink]="['/app-add-user',list._id]" class="edit-action" >
+                            <img src />
+                        </td>
+                        <td>
+                            <a (click)="deleteTask(list._id)">X</a>
+                        </td>
+                    </tr>
+                </tbody>
+    
+            </table>
+        </div>
     </div>
 </div>

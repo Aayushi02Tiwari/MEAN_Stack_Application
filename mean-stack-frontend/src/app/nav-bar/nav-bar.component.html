@@ -1,0 +1,23 @@
+<div class="navbar-full-wrapper">
+    <div class="brand">
+      <a class="navbar-brand" href="#">
+        <img src="../../assets/Logo.svg">
+      </a>
+    </div>
+
+    <div class="navlink-wrapper">
+      <div class="left-nav">
+        <div class="nav-item" *ngFor="let navLink of navLinks()">
+          <a class="nav-link"  [class.active]="navLink.isActive">
+            <img [src]="navLink.img">&nbsp;{{navLink.title}}
+          </a>
+        </div>
+      </div>
+      <div class="right-nav">
+        <div class="nav-item" *ngFor="let navLink of rightNavLinks()">
+          <a class="nav-link">
+              <img [src]="navLink.img">&nbsp;{{navLink.title}} 
+          </a>
+        </div>
+      </div>
+    </div>
